@@ -43,7 +43,7 @@ if __name__ == '__main__':
         for it in range(1):
             n_spots = random.randint(600, 1100)
             try:
-                instance_coord = simfish.simulate_localization_pattern("./templates/templates/", i_cell = 0, n_spots = n_spots, pattern = pattern, proportion_pattern = 0.9)
+                instance_coord = simfish.simulate_localization_pattern("./templates/templates/", i_cell = 2, n_spots = n_spots, pattern = pattern, proportion_pattern = 0.9)
             except ValueError:
                 pass
             rows = instance_coord["rna_coord"][:,1]
@@ -60,9 +60,13 @@ if __name__ == '__main__':
                 new_cols.append(new_point[1])
 
 
-            ge_image = createGeneExpressionImg(new_rows, new_cols, (100,100))
-            plt.imshow(ge_image)
+            fig, axs = plt.subplots(1,2)
+            axs[0].imshow(new_nuc)
+            axs[1].imshow(new_cell)
             plt.show()
+            # ge_image = createGeneExpressionImg(new_rows, new_cols, (100,100))
+            # plt.imshow(ge_image)
+            # plt.show()
 
             ## save:
             # io.imsave("/media/yob/", new_nuc, check_contrast=False)
